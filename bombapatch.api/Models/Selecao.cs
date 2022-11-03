@@ -1,13 +1,15 @@
-namespace bombapatch.api.Models;
-
-public class Selecao
+namespace bombapatch.api.Models
 {
-    public int SelecaoId { get; set; }
+    public class Selecao
+    {
+        public int Id { get; set; } 
 
-     public string Nome { get; set; } = string.Empty;
+        public string Nome { get; set; }
 
-    public string DataJogos { get; set; } = string.Empty;
+        public string Continente { get; set; } 
 
-    public string QtdJogadores { get; set; } = string.Empty;
+        public int QtdJogadores { get; set; } 
 
+        
+    }
 }
