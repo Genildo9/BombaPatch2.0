@@ -2,7 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using bombapatch.api.Data;
+using BombaPatch.Application;
+using BombaPatch.Application.Contratos;
+using BombaPatch.Persistence;
+using BombaPatch.Persistence.Contextos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,11 +32,17 @@ namespace ProEventos.API
         public void ConfigureServices(IServiceCollection services)
         {
 //trabalhando com arquitetura MVC
-            services.AddDbContext<DataContext>(
+            services.AddDbContext<BombaPatchContext>(
                 //fazendo a configuração do sqlite no app settings
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
             services.AddControllers(); //retorna o controller (1)
+
+            services.AddScoped<ISelecaoService, SelecaoService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<ISelecaoPersist, SelecaoPersist>();
+
+            services.AddCors();
             services.AddSwaggerGen(c =>  //config swagger
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProEventos.API", Version = "v1" });
