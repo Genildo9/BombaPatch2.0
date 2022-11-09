@@ -1,20 +1,20 @@
-using bombapatch.Domain;
+using BombaPatch.Application.Dtos;
 
 namespace BombaPatch.Application.Contratos
 {
     public interface ISelecaoService
     {
-         Task<Selecao> AddSelecoes(Selecao model);
+         Task<SelecaoDto> AddSelecoes(SelecaoDto model);
 
-         Task<Selecao> UpdateSelecao(int selecaoId, Selecao model);
+         Task<SelecaoDto> UpdateSelecao(int selecaoId, SelecaoDto model);
          Task<bool> DeleteSelecao(int selecaoId); 
 
         //Seleção
         //Retorna Todas as seleções pelo nome
-         Task<Selecao[]> GetAllSelecoesByNomeAsync(string nome);
+         Task<SelecaoDto[]> GetAllSelecoesByNomeAsync(string nome);
          //Retorna todas as seleções
-         Task<Selecao[]> GetAllSelecoesAsync();
+         Task<SelecaoDto[]> GetAllSelecoesAsync();
          //Retorna a seleção pelo id
-         Task<Selecao> GetAllSelecaoByIdAsync(int selecaoId);
+         Task<SelecaoDto> GetAllSelecaoByIdAsync(int selecaoId);
     }
 }

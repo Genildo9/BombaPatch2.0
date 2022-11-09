@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
 
 namespace ProEventos.API
 {
@@ -36,7 +37,10 @@ namespace ProEventos.API
                 //fazendo a configuração do sqlite no app settings
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
-            services.AddControllers(); //retorna o controller (1)
+            services.AddControllers() //retorna o controller (1)
+                    /*.AddNewtonsoftJson(XmlConfigurationExtensions => x.SerializerSettings.ReferenceLoopHandling
+                    = Newtonsoft.Json.ReferenceLoopHandling.Ignore)*/;
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<ISelecaoService, SelecaoService>();
             services.AddScoped<IGeralPersist, GeralPersist>();

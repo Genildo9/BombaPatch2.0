@@ -1,5 +1,7 @@
+using AutoMapper;
 using bombapatch.Domain;
 using BombaPatch.Application.Contratos;
+using BombaPatch.Application.Dtos;
 using BombaPatch.Persistence;
 
 namespace BombaPatch.Application
@@ -8,43 +10,51 @@ namespace BombaPatch.Application
     {
         private readonly IGeralPersist _geralPersist;
         private readonly ISelecaoPersist _selecaoPersist;
-        public SelecaoService(IGeralPersist geralPersist, ISelecaoPersist selecaoPersist)
+        private readonly IMapper _mapper;
+        public SelecaoService(IGeralPersist geralPersist, ISelecaoPersist selecaoPersist, IMapper mapper)
         {
+            _mapper = mapper;
             _selecaoPersist = selecaoPersist;
             _geralPersist = geralPersist;
 
         }
-        public async Task<Selecao> AddSelecoes(Selecao model)
+        public async Task<SelecaoDto> AddSelecoes(SelecaoDto model)
         {
             try
             {
-                _geralPersist.Add<Selecao>(model);
+                var selecao = _mapper.Map<Selecao>(model);
+                _geralPersist.Add<Selecao>(selecao);
+
                 if (await _geralPersist.SaveChangesAsync())
                 {
-                    return await _selecaoPersist.GetAllSelecaoByIdAsync(model.Id);
+                    var selecaoretorno = await _selecaoPersist.GetAllSelecaoByIdAsync(selecao.Id);
+                    return _mapper.Map<SelecaoDto>(selecaoretorno);
                 }
                 return null;
             }
             catch (Exception ex)
             {
-                
-                throw new Exception (ex.Message);
+
+                throw new Exception(ex.Message);
             }
         }
 
-        public async Task<Selecao> UpdateSelecao(int selecaoId, Selecao model)
+        public async Task<SelecaoDto> UpdateSelecao(int selecaoId, SelecaoDto model)
         {
             try
             {
                 var selecao = await _selecaoPersist.GetAllSelecaoByIdAsync(selecaoId);
                 if (selecao == null) return null;
 
-                model.Id =selecao.Id;
+                model.Id = selecao.Id;
 
-                _geralPersist.Update(model);
+                _mapper.Map(model, selecao);
+
+                _geralPersist.Update<Selecao>(selecao);
                 if (await _geralPersist.SaveChangesAsync())
                 {
-                    return await _selecaoPersist.GetAllSelecaoByIdAsync(model.Id);
+                    var selecaoretorno = await _selecaoPersist.GetAllSelecaoByIdAsync(selecao.Id);
+                    return _mapper.Map<SelecaoDto>(selecaoretorno);
                 }
                 return null;
 
@@ -57,7 +67,7 @@ namespace BombaPatch.Application
 
         public async Task<bool> DeleteSelecao(int selecaoId)
         {
-             try
+            try
             {
                 var selecao = await _selecaoPersist.GetAllSelecaoByIdAsync(selecaoId);
                 if (selecao == null) throw new Exception("Seleção para deletar não encontrada");
@@ -72,14 +82,16 @@ namespace BombaPatch.Application
             }
         }
 
-         public async Task<Selecao[]> GetAllSelecoesAsync()
+        public async Task<SelecaoDto[]> GetAllSelecoesAsync()
         {
             try
             {
                 var selecoes = await _selecaoPersist.GetAllSelecoesAsync();
                 if (selecoes == null) return null;
 
-                return selecoes;
+                var resultado = _mapper.Map<SelecaoDto[]>(selecoes);
+
+                return resultado;
             }
             catch (Exception ex)
             {
@@ -87,14 +99,16 @@ namespace BombaPatch.Application
             }
         }
 
-        public async Task<Selecao[]> GetAllSelecoesByNomeAsync(string nome)
+        public async Task<SelecaoDto[]> GetAllSelecoesByNomeAsync(string nome)
         {
             try
             {
                 var selecoes = await _selecaoPersist.GetAllSelecoesByNomeAsync(nome);
                 if (selecoes == null) return null;
 
-                return selecoes;
+                var resultado = _mapper.Map<SelecaoDto[]>(selecoes);
+
+                return resultado;
             }
             catch (Exception ex)
             {
@@ -102,14 +116,16 @@ namespace BombaPatch.Application
             }
         }
 
-        public async Task<Selecao> GetAllSelecaoByIdAsync(int selecaoId)
+        public async Task<SelecaoDto> GetAllSelecaoByIdAsync(int selecaoId)
         {
             try
             {
-                var selecoes = await _selecaoPersist.GetAllSelecaoByIdAsync(selecaoId);
-                if (selecoes == null) return null;
+                var selecao = await _selecaoPersist.GetAllSelecaoByIdAsync(selecaoId);
+                if (selecao == null) return null;
 
-                return selecoes;
+                var resultado = _mapper.Map<SelecaoDto>(selecao);
+
+                return resultado;
             }
             catch (Exception ex)
             {

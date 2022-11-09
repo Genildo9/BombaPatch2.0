@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using BombaPatch.Persistence.Contextos;
 using BombaPatch.Application.Contratos;
 using Microsoft.AspNetCore.Http;
+using BombaPatch.Application.Dtos;
 
 namespace bombapatch.api.Controllers;
 
@@ -24,7 +25,7 @@ public class SelecaoController : ControllerBase
         try
         {
             var selecoes = await _selecaoService.GetAllSelecoesByNomeAsync(nome);
-            if (selecoes == null) return NotFound("Nenhuma seleção encontrada.");
+            if (selecoes == null) return NoContent();
 
             return Ok(selecoes);
         }
@@ -43,7 +44,7 @@ public class SelecaoController : ControllerBase
         try
         {
             var selecoes = await _selecaoService.GetAllSelecoesAsync();
-            if (selecoes == null) return NotFound("Nenhuma seleção encontrada.");
+            if (selecoes == null) return NoContent();
 
             return Ok(selecoes);
         }
@@ -60,7 +61,7 @@ public class SelecaoController : ControllerBase
         try
         {
             var selecao = await _selecaoService.GetAllSelecaoByIdAsync(id);
-            if (selecao == null) return NotFound("Nenhuma seleção encontrada.");
+            if (selecao == null) return NoContent();
 
             return Ok(selecao);
         }
@@ -73,12 +74,12 @@ public class SelecaoController : ControllerBase
 
     [HttpPost]
 
-    public async Task<IActionResult> Post(Selecao model)
+    public async Task<IActionResult> Post(SelecaoDto model)
     {
         try 
         {
             var selecao = await _selecaoService.AddSelecoes(model);
-            if (selecao == null) return BadRequest("Erro ao tentar adicionar seleção.");
+            if (selecao == null) return NoContent();
 
             return Ok(selecao);
         }
@@ -91,12 +92,12 @@ public class SelecaoController : ControllerBase
 
     [HttpPut("{id}")]
 
-    public async Task<IActionResult> Put(int id, Selecao model)
+    public async Task<IActionResult> Put(int id, SelecaoDto model)
     {
         try
         {
             var selecao = await _selecaoService.UpdateSelecao(id, model);
-            if (selecao == null) return BadRequest("Erro ao tentar adicionar seleção.");
+            if (selecao == null) return NoContent();
 
             return Ok(selecao);
         }
@@ -113,14 +114,14 @@ public class SelecaoController : ControllerBase
     {
         try
         {
-            if(await _selecaoService.DeleteSelecao(id))
-            {
-                return Ok("Deletado");
-            }
-            else
-            {
-                return BadRequest("Seleção não deletada.");
-            }
+            var selecao = await _selecaoService.GetAllSelecaoByIdAsync(id);
+            if (selecao == null) return NoContent();
+
+            return await _selecaoService.DeleteSelecao(id) ?
+            
+                 Ok("Deletado"): 
+                 throw new Exception("Ocorreu um probleminha!!");
+            
         }
         catch (Exception ex)
         { 
