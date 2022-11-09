@@ -18,7 +18,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
 
-namespace ProEventos.API
+namespace BombaPatch.API
 {
     public class Startup
     {
@@ -42,14 +42,16 @@ namespace ProEventos.API
                     = Newtonsoft.Json.ReferenceLoopHandling.Ignore)*/;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            services.AddScoped<IJogosService, JogosService>();
             services.AddScoped<ISelecaoService, SelecaoService>();
             services.AddScoped<IGeralPersist, GeralPersist>();
             services.AddScoped<ISelecaoPersist, SelecaoPersist>();
+            services.AddScoped<IJogosPersist, JogosPersist>();
 
             services.AddCors();
             services.AddSwaggerGen(c =>  //config swagger
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProEventos.API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "BombaPatch.API", Version = "v1" });
             });
         }
 
@@ -60,7 +62,7 @@ namespace ProEventos.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ProEventos.API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BombaPatch.API v1"));
             }
             // protocolo https
             app.UseHttpsRedirection();

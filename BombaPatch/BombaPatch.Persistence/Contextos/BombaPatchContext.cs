@@ -19,6 +19,7 @@ namespace BombaPatch.Persistence.Contextos
         public DbSet<GrupoSelecoes> GruposSelecoes { get; set; }
         public DbSet<Jogadores> Jogadores { get; set; }
         public DbSet<Partida> Partidas { get; set; }
+        public DbSet<Jogos> Jogos { get; set;}
 
         //apagar tabelas com mais de uma chave foreingn key
        /* protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -3,6 +3,7 @@ using System;
 using BombaPatch.Persistence.Contextos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BombaPatch.Persistence.Migrations
 {
     [DbContext(typeof(BombaPatchContext))]
-    partial class BombaPatchContextModelSnapshot : ModelSnapshot
+    [Migration("20221109221010_jogo")]
+    partial class jogo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
