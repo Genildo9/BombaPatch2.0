@@ -12,9 +12,9 @@ namespace BombaPatch.Application.Helpers
         public BombaPatchProfile()
         {
             CreateMap<Selecao, SelecaoDto>().ReverseMap();
-            CreateMap<Jogadores, JogadoresDto>().ReverseMap();
-            CreateMap<GrupoSelecoes, GrupoSelecoesDto>().ReverseMap();
-            CreateMap<Jogos, JogosDto>().ReverseMap();
+            CreateMap<Jogador, JogadorDto>().ReverseMap();
+            CreateMap<Grupo, GrupoDto>().ReverseMap();
+            CreateMap<Jogo, JogoDto>().ReverseMap();
         }
     }
 }

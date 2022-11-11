@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BombaPatch.Persistence
 {
-    public class JogoPersist : IJogoPersist 
+    public class GrupoPersist : IGrupoPersist 
     {
         private readonly BombaPatchContext _context;
 
-        public JogoPersist(BombaPatchContext context)
+        public GrupoPersist(BombaPatchContext context)
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<Jogo[]> GetAllJogosAsync()
+        public async Task<Grupo[]> GetAllGruposAsync()
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<Grupo> query = _context.GruposSelecoes;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
@@ -25,9 +25,9 @@ namespace BombaPatch.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Jogo[]> GetAllJogosByNomeAsync(string nome)
+        public async Task<Grupo[]> GetAllGruposByNomeAsync(string nome)
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<Grupo> query = _context.GruposSelecoes;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
@@ -36,13 +36,13 @@ namespace BombaPatch.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Jogo> GetJogoByIdAsync(int JogosId)
+        public async Task<Grupo> GetGrupoByIdAsync(int GrupoId)
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<Grupo> query = _context.GruposSelecoes;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id)
-            .Where(j => j.Id == JogosId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
+            .Where(e => e.Id == GrupoId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
 
             return await query.FirstOrDefaultAsync();
         }

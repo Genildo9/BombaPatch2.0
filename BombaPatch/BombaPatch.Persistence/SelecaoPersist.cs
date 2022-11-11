@@ -17,9 +17,7 @@ namespace BombaPatch.Persistence
 
         public async Task<Selecao[]> GetAllSelecoesAsync()
         {
-            IQueryable<Selecao> query = _context.Selecoes
-                .Include(s => s.Jogadores)
-                .Include(s => s.GruposSelecoes);
+            IQueryable<Selecao> query = _context.Selecoes;
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
 
@@ -28,9 +26,7 @@ namespace BombaPatch.Persistence
 
         public async Task<Selecao[]> GetAllSelecoesByNomeAsync(string nome)
         {
-            IQueryable<Selecao> query = _context.Selecoes
-                .Include(s => s.Jogadores)
-                .Include(s => s.GruposSelecoes);
+            IQueryable<Selecao> query = _context.Selecoes;
 
             query = query.AsNoTracking().OrderBy(e => e.Id)
             .Where(s => s.Nome.ToLower().Contains(nome.ToLower())); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
@@ -40,9 +36,7 @@ namespace BombaPatch.Persistence
 
         public async Task<Selecao> GetAllSelecaoByIdAsync(int SelecaoId)
         {
-            IQueryable<Selecao> query = _context.Selecoes
-                .Include(s => s.Jogadores)
-                .Include(s => s.GruposSelecoes);
+            IQueryable<Selecao> query = _context.Selecoes;
 
             query = query.AsNoTracking().OrderBy(e => e.Id)
             .Where(s => s.Id == SelecaoId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome

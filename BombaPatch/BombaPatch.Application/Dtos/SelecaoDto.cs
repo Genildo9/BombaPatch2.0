@@ -14,11 +14,11 @@ namespace BombaPatch.Application.Dtos
 
         //Validação de int
         [Display(Name ="Qtd Jogadores")]
-        [Range(1, 30, ErrorMessage ="{0} Não pode ser menor que 1 e maior que 30.")]
+        [Range(1, 26, ErrorMessage ="{0} Não pode ser menor que 1 e maior que 30.")]
         public int QtdJogadores { get; set; }
 
-        public IEnumerable<JogadoresDto>? Jogadores { get; set; }
+        public IEnumerable<JogadorDto>? Jogadores { get; set; }
         
-        public IEnumerable<GrupoSelecoesDto>? GruposSelecoes { get; set; }
+        public IEnumerable<GrupoDto>? GruposSelecoes { get; set; }
     }
 }

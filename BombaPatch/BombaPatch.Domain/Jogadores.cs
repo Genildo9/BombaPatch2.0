@@ -3,7 +3,7 @@ using bombapatch.Domain;
 
 namespace BombaPatch.Domain
 {
-    public class Jogadores
+    public class Jogador
     {
         public int Id { get; set; }
         public int SelecaoId { get; set; }

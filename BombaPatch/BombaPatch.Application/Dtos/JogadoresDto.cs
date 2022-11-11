@@ -1,6 +1,6 @@
 namespace BombaPatch.Application.Dtos
 {
-    public class JogadoresDto
+    public class JogadorDto
     {
         public int Id { get; set; }
         public int SelecaoId { get; set; }

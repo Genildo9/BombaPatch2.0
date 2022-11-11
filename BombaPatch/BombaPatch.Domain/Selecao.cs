@@ -11,10 +11,8 @@ namespace bombapatch.Domain
         public string Continente { get; set; } 
 
         public int QtdJogadores { get; set; }
-
-        public IEnumerable<Jogadores>? Jogadores { get; set; }
         
-        public IEnumerable<GrupoSelecoes>? GruposSelecoes { get; set; }
+        public int GrupoSelecaoId { get; set; }
 
         
     }

@@ -16,10 +16,12 @@ namespace BombaPatch.Persistence.Contextos
         public DbSet<Arbitro> Arbitros { get; set; }
         public DbSet<Estadio> Estadios { get; set; }
         public DbSet<Fase> Fases { get; set; }
-        public DbSet<GrupoSelecoes> GruposSelecoes { get; set; }
-        public DbSet<Jogadores> Jogadores { get; set; }
+        public DbSet<Grupo> GruposSelecoes { get; set; }
+        public DbSet<Jogador> Jogadores { get; set; }
         public DbSet<Partida> Partidas { get; set; }
-        public DbSet<Jogos> Jogos { get; set;}
+        public DbSet<Jogo> Jogos { get; set;}
+        public DbSet<JogoResultado> ResultadoJogos { get; set; }
+        public DbSet<SelecaoJogoResultado> ResultadoSelecao { get; set; }
 
         //apagar tabelas com mais de uma chave foreingn key
        /* protected override void OnModelCreating(ModelBuilder modelBuilder)

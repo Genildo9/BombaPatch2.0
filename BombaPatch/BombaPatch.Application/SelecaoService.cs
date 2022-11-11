@@ -82,14 +82,14 @@ namespace BombaPatch.Application
             }
         }
 
-        public async Task<SelecaoDto[]> GetAllSelecoesAsync()
+        public async Task<List<SelecaoDto>> GetAllSelecoesAsync()
         {
             try
             {
                 var selecoes = await _selecaoPersist.GetAllSelecoesAsync();
                 if (selecoes == null) return null;
 
-                var resultado = _mapper.Map<SelecaoDto[]>(selecoes);
+                var resultado = _mapper.Map<List<SelecaoDto>>(selecoes);
 
                 return resultado;
             }
@@ -99,14 +99,14 @@ namespace BombaPatch.Application
             }
         }
 
-        public async Task<SelecaoDto[]> GetAllSelecoesByNomeAsync(string nome)
+        public async Task<List<SelecaoDto>> GetAllSelecoesByNomeAsync(string nome)
         {
             try
             {
                 var selecoes = await _selecaoPersist.GetAllSelecoesByNomeAsync(nome);
                 if (selecoes == null) return null;
 
-                var resultado = _mapper.Map<SelecaoDto[]>(selecoes);
+                var resultado = _mapper.Map<List<SelecaoDto>>(selecoes);
 
                 return resultado;
             }

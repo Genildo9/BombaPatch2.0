@@ -3,14 +3,14 @@ using BombaPatch.Domain;
 
 namespace BombaPatch.Persistence
 {
-    public interface IJogoPersist
+    public interface IGrupoPersist
     {
         //Seleção
         //Retorna Todas as seleções pelo nome
-         Task<Jogo[]> GetAllJogosByNomeAsync(string nome);
+         Task<Grupo[]> GetAllGruposByNomeAsync(string nome);
          //Retorna todas as seleções
-         Task<Jogo[]> GetAllJogosAsync();
+         Task<Grupo[]> GetAllGruposAsync();
          //Retorna a seleção pelo id
-         Task<Jogo> GetJogoByIdAsync(int jogosId);
+         Task<Grupo> GetGrupoByIdAsync(int jogoId);
     }
 }

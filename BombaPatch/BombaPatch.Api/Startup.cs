@@ -42,11 +42,12 @@ namespace BombaPatch.API
                     = Newtonsoft.Json.ReferenceLoopHandling.Ignore)*/;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IJogosService, JogosService>();
+            services.AddScoped<IJogoService, JogoService>();
             services.AddScoped<ISelecaoService, SelecaoService>();
             services.AddScoped<IGeralPersist, GeralPersist>();
             services.AddScoped<ISelecaoPersist, SelecaoPersist>();
-            services.AddScoped<IJogosPersist, JogosPersist>();
+            services.AddScoped<IJogoPersist, JogoPersist>();
+            services.AddScoped<IGrupoPersist, GrupoPersist>();
 
             services.AddCors();
             services.AddSwaggerGen(c =>  //config swagger
