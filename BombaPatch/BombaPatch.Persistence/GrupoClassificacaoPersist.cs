@@ -1,23 +1,23 @@
-using bombapatch.Domain;
 using BombaPatch.Domain;
 using BombaPatch.Persistence.Contextos;
+using BombaPatch.Persistence.Contratos;
 using Microsoft.EntityFrameworkCore;
 
 namespace BombaPatch.Persistence
 {
-    public class JogoPersist : IJogoPersist 
+        public class GrupoClassificacaoPersist : IGrupoClassificacaoPersist 
     {
         private readonly BombaPatchContext _context;
 
-        public JogoPersist(BombaPatchContext context)
+        public GrupoClassificacaoPersist(BombaPatchContext context)
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<Jogo[]> GetAllJogosAsync()
+        public async Task<GrupoClassificacao[]> GetAllGruposClassificacaoAsync()
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<GrupoClassificacao> query = _context.GrupoClassificacao;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
@@ -25,9 +25,9 @@ namespace BombaPatch.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Jogo[]> GetAllJogosByNomeAsync(string nome)
+        public async Task<GrupoClassificacao[]> GetAllGruposClassificacaoByNomeAsync(string nome)
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<GrupoClassificacao> query = _context.GrupoClassificacao;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
@@ -36,16 +36,17 @@ namespace BombaPatch.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Jogo> GetJogoByIdAsync(int JogosId)
+        public async Task<GrupoClassificacao> GetAllGrupoClassificacaoByIdAsync(int GrupoClassificacaoId)
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<GrupoClassificacao> query = _context.GrupoClassificacao;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id)
-            .Where(e=> e.Id == JogosId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
+            .Where(e => e.Id == GrupoClassificacaoId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
 
             return await query.FirstOrDefaultAsync();
         }
        
     }
+    
 }

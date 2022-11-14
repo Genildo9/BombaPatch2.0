@@ -20,5 +20,6 @@ namespace BombaPatch.Application.Dtos
         public IEnumerable<JogadorDto>? Jogadores { get; set; }
         
         public IEnumerable<GrupoDto>? GruposSelecoes { get; set; }
+        public int GrupoId { get; set; }
     }
 }

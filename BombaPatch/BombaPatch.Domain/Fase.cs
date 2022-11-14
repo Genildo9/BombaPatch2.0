@@ -4,6 +4,5 @@ namespace BombaPatch.Domain
     {
      public int Id { get; set; }   
      public string Nome { get; set; }
-    public IEnumerable<Partida> Partidas { get; set; }   
 }
 }

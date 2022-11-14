@@ -11,6 +11,6 @@ namespace BombaPatch.Application.Contratos
 
         Task<List<GrupoDto>> GetAllGruposByNomeAsync(string nome);
         Task<List<Grupo>> GetAllGrupoAsync();
-        Task<GrupoDto> GetAllGrupoByIdAsync(int grupooId);
+        Task<GrupoDto> GetAllGrupoByIdAsync(int grupoId);
     }
 }

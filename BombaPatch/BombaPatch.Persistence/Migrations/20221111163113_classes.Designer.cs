@@ -3,6 +3,7 @@ using System;
 using BombaPatch.Persistence.Contextos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BombaPatch.Persistence.Migrations
 {
     [DbContext(typeof(BombaPatchContext))]
-    partial class BombaPatchContextModelSnapshot : ModelSnapshot
+    [Migration("20221111163113_classes")]
+    partial class classes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -37,35 +39,6 @@ namespace BombaPatch.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Arbitros");
-                });
-
-            modelBuilder.Entity("BombaPatch.Domain.Eliminatoria", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Fase")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("NumeroJogo")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SelecaoA")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SelecaoB")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SelecaoPerdedora")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SelecaoVencedora")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Eliminatoria");
                 });
 
             modelBuilder.Entity("BombaPatch.Domain.Estadio", b =>
@@ -115,50 +88,9 @@ namespace BombaPatch.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SelecaoClassificada1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SelecaoClassificada2")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.ToTable("GruposSelecoes");
-                });
-
-            modelBuilder.Entity("BombaPatch.Domain.GrupoClassificacao", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Criterio1Pontos")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Criterio2SaldoGols")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Criterio3GolsMarcados")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Criterio4CartoesVermelhos")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Criterio5CartoesAmarelos")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("GrupoId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Posicao")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SelecaoId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GrupoClassificacao");
                 });
 
             modelBuilder.Entity("BombaPatch.Domain.Jogador", b =>
@@ -258,10 +190,7 @@ namespace BombaPatch.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("GrupoId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("GrupoIdentificador")
+                    b.Property<int?>("GrupoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("GrupoSelecaoId")
@@ -369,13 +298,14 @@ namespace BombaPatch.Persistence.Migrations
 
             modelBuilder.Entity("bombapatch.Domain.Selecao", b =>
                 {
-                    b.HasOne("BombaPatch.Domain.Grupo", "Grupo")
-                        .WithMany()
-                        .HasForeignKey("GrupoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("BombaPatch.Domain.Grupo", null)
+                        .WithMany("Selecoes")
+                        .HasForeignKey("GrupoId");
+                });
 
-                    b.Navigation("Grupo");
+            modelBuilder.Entity("BombaPatch.Domain.Grupo", b =>
+                {
+                    b.Navigation("Selecoes");
                 });
 #pragma warning restore 612, 618
         }

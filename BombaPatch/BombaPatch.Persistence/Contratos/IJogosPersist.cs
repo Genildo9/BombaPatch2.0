@@ -5,12 +5,12 @@ namespace BombaPatch.Persistence
 {
     public interface IJogoPersist
     {
-        //Seleção
-        //Retorna Todas as seleções pelo nome
+        //Jogos
+        //Retorna Todas as jogos pelo nome
          Task<Jogo[]> GetAllJogosByNomeAsync(string nome);
-         //Retorna todas as seleções
+         //Retorna todas as jogos
          Task<Jogo[]> GetAllJogosAsync();
-         //Retorna a seleção pelo id
+         //Retorna a Jogo pelo id
          Task<Jogo> GetJogoByIdAsync(int jogosId);
     }
 }

@@ -36,7 +36,7 @@ public class GrupoController : ControllerBase
         }
     }
 
-    [HttpGet] // nome
+    [HttpGet("{nome}")] // nome
     public async Task<IActionResult> Get(string nome)
     {
         try

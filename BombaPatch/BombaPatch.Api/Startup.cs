@@ -17,6 +17,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
+using BombaPatch.Domain;
+using BombaPatch.Persistence.Contratos;
 
 namespace BombaPatch.API
 {
@@ -37,17 +39,28 @@ namespace BombaPatch.API
                 //fazendo a configuração do sqlite no app settings
                 context => context.UseSqlite(Configuration.GetConnectionString("Default"))
             );
+
+            services.AddScoped<IJogoService, JogoService>();
+            services.AddScoped<ISelecaoService, SelecaoService>();
+            services.AddScoped<IGeralPersist, GeralPersist>();
+            services.AddScoped<IGrupoService, GrupoService>();
+            services.AddScoped<IGrupoClassificacaoService, GrupoClassificacaoService>();
+            services.AddScoped<ISelecaoPersist, SelecaoPersist>();
+            services.AddScoped<IJogoPersist, JogoPersist>();
+            services.AddScoped<IGrupoPersist, GrupoPersist>();
+            services.AddScoped<IGrupoClassificacaoPersist, GrupoClassificacaoPersist>();
+            services.AddScoped<IEliminatoriaPersist, EliminatoriaPersist>();
+            services.AddScoped<IEliminatoriaService, EliminatoriaService>();
+            services.AddScoped<ISelecaoJogoResultadoPersist, SelecaoJogoResultadoPersist>();
+            services.AddScoped<ISelecaoJogoResultadoService, SelecaoJogoResultadoService>();
+
             services.AddControllers() //retorna o controller (1)
                     /*.AddNewtonsoftJson(XmlConfigurationExtensions => x.SerializerSettings.ReferenceLoopHandling
                     = Newtonsoft.Json.ReferenceLoopHandling.Ignore)*/;
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddScoped<IJogoService, JogoService>();
-            services.AddScoped<ISelecaoService, SelecaoService>();
-            services.AddScoped<IGeralPersist, GeralPersist>();
-            services.AddScoped<ISelecaoPersist, SelecaoPersist>();
-            services.AddScoped<IJogoPersist, JogoPersist>();
-            services.AddScoped<IGrupoPersist, GrupoPersist>();
+
+            
 
             services.AddCors();
             services.AddSwaggerGen(c =>  //config swagger

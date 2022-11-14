@@ -3,6 +3,7 @@ using System;
 using BombaPatch.Persistence.Contextos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BombaPatch.Persistence.Migrations
 {
     [DbContext(typeof(BombaPatchContext))]
-    partial class BombaPatchContextModelSnapshot : ModelSnapshot
+    [Migration("20221113215243_elimina")]
+    partial class elimina
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.10");
@@ -258,10 +260,7 @@ namespace BombaPatch.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("GrupoId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("GrupoIdentificador")
+                    b.Property<int?>("GrupoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("GrupoSelecaoId")
@@ -369,13 +368,14 @@ namespace BombaPatch.Persistence.Migrations
 
             modelBuilder.Entity("bombapatch.Domain.Selecao", b =>
                 {
-                    b.HasOne("BombaPatch.Domain.Grupo", "Grupo")
-                        .WithMany()
-                        .HasForeignKey("GrupoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("BombaPatch.Domain.Grupo", null)
+                        .WithMany("Selecoes")
+                        .HasForeignKey("GrupoId");
+                });
 
-                    b.Navigation("Grupo");
+            modelBuilder.Entity("BombaPatch.Domain.Grupo", b =>
+                {
+                    b.Navigation("Selecoes");
                 });
 #pragma warning restore 612, 618
         }

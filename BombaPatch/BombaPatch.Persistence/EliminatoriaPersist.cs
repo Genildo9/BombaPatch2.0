@@ -1,23 +1,23 @@
-using bombapatch.Domain;
 using BombaPatch.Domain;
 using BombaPatch.Persistence.Contextos;
+using BombaPatch.Persistence.Contratos;
 using Microsoft.EntityFrameworkCore;
 
 namespace BombaPatch.Persistence
 {
-    public class JogoPersist : IJogoPersist 
+ public class EliminatoriaPersist : IEliminatoriaPersist 
     {
         private readonly BombaPatchContext _context;
 
-        public JogoPersist(BombaPatchContext context)
+        public EliminatoriaPersist(BombaPatchContext context)
         {
             _context = context;
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public async Task<Jogo[]> GetAllJogosAsync()
+        public async Task<Eliminatoria[]> GetAllEliminatoriaAsync()
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<Eliminatoria> query = _context.Eliminatoria;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
@@ -25,9 +25,9 @@ namespace BombaPatch.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Jogo[]> GetAllJogosByNomeAsync(string nome)
+        public async Task<Eliminatoria[]> GetAllEliminatoriaByNomeAsync(string nome)
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<Eliminatoria> query = _context.Eliminatoria;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id);
@@ -36,16 +36,15 @@ namespace BombaPatch.Persistence
             return await query.ToArrayAsync();
         }
 
-        public async Task<Jogo> GetJogoByIdAsync(int JogosId)
+        public async Task<Eliminatoria> GetEliminatoriaByIdAsync(int eliminatoriaId)
         {
-            IQueryable<Jogo> query = _context.Jogos;
+            IQueryable<Eliminatoria> query = _context.Eliminatoria;
 
 
             query = query.AsNoTracking().OrderBy(e => e.Id)
-            .Where(e=> e.Id == JogosId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
+            .Where(e => e.Id == eliminatoriaId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
 
             return await query.FirstOrDefaultAsync();
         }
-       
     }
 }

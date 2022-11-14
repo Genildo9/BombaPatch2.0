@@ -6,11 +6,11 @@ namespace BombaPatch.Persistence
     public interface IGrupoPersist
     {
         //Seleção
-        //Retorna Todas as seleções pelo nome
+        //Retorna Todas as grupos pelo nome
          Task<Grupo[]> GetAllGruposByNomeAsync(string nome);
-         //Retorna todas as seleções
+         //Retorna todas as grupos
          Task<Grupo[]> GetAllGruposAsync();
-         //Retorna a seleção pelo id
+         //Retorna a grupo pelo id
          Task<Grupo> GetGrupoByIdAsync(int jogoId);
     }
 }

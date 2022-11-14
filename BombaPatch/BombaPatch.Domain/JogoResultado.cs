@@ -2,6 +2,7 @@ namespace BombaPatch.Domain
 {
     public class JogoResultado
     {
+        public int Id {get; set;}
         public SelecaoJogoResultado SelecaoJogoResultadoA {get; set;}
         public SelecaoJogoResultado SelecaoJogoResultadoB {get; set;}
         public string Resultado {get; set;}

@@ -39,7 +39,7 @@ namespace BombaPatch.Persistence
             IQueryable<Selecao> query = _context.Selecoes;
 
             query = query.AsNoTracking().OrderBy(e => e.Id)
-            .Where(s => s.Id == SelecaoId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
+            .Where(e => e.Id == SelecaoId); // dado um nome, converte em lowercase e ve se contem um metodo com esse nome
 
             return await query.FirstOrDefaultAsync();
         }
