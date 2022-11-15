@@ -30,6 +30,26 @@ namespace BombaPatch.Api.Controllers
             _mapper = mapper;
             _selecaoService = selecaoService;
         }
+
+    [HttpGet]
+    //vai retornar todas as eliminatorias que estão no banco de dados
+    public async Task<IActionResult> Get()
+    {
+        try
+        {
+            var eliminatoria = await _eliminatoriaService.GetEliminatoriaAsync();
+            if (eliminatoria == null) return NoContent();
+
+            return Ok(eliminatoria);
+        }
+        catch (Exception ex)
+        { 
+            return this.StatusCode(StatusCodes.Status500InternalServerError, 
+            $"Erro ao tentar recuperar eliminatoria. Erro: {ex.Message}");
+        }
+    }   
+
+
     [HttpPost]
     public async Task<IActionResult> GerarElimitorias(FaseEnum fase)
     {

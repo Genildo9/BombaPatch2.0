@@ -54,9 +54,7 @@ namespace BombaPatch.API
             services.AddScoped<ISelecaoJogoResultadoPersist, SelecaoJogoResultadoPersist>();
             services.AddScoped<ISelecaoJogoResultadoService, SelecaoJogoResultadoService>();
 
-            services.AddControllers() //retorna o controller (1)
-                    /*.AddNewtonsoftJson(XmlConfigurationExtensions => x.SerializerSettings.ReferenceLoopHandling
-                    = Newtonsoft.Json.ReferenceLoopHandling.Ignore)*/;
+            services.AddControllers(); //retorna o controller (1)
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
