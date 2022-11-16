@@ -1,0 +1,828 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "BombaPatch.API",
+      "version": "v1"
+    },
+    "paths": {
+      "/api/Eliminatoria/{id}": {
+        "delete": {
+          "tags": [
+            "Eliminatoria"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Eliminatoria": {
+        "get": {
+          "tags": [
+            "Eliminatoria"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Eliminatoria"
+          ],
+          "parameters": [
+            {
+              "name": "fase",
+              "in": "query",
+              "schema": {
+                "$ref": "#/components/schemas/FaseEnum"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Grupo/{id}": {
+        "delete": {
+          "tags": [
+            "Grupo"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Grupo"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Grupo": {
+        "get": {
+          "tags": [
+            "Grupo"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Grupo"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrupoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrupoDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GrupoDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Grupo/{nome}": {
+        "get": {
+          "tags": [
+            "Grupo"
+          ],
+          "parameters": [
+            {
+              "name": "nome",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Jogo/nome": {
+        "get": {
+          "tags": [
+            "Jogo"
+          ],
+          "parameters": [
+            {
+              "name": "nome",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Jogo": {
+        "get": {
+          "tags": [
+            "Jogo"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Jogo"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JogoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JogoDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JogoDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Jogo/{id}": {
+        "get": {
+          "tags": [
+            "Jogo"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Jogo"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JogoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JogoDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JogoDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Jogo"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Partida/nome": {
+        "get": {
+          "tags": [
+            "Partida"
+          ],
+          "parameters": [
+            {
+              "name": "nome",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Partida": {
+        "get": {
+          "tags": [
+            "Partida"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Partida"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Partida/{id}": {
+        "get": {
+          "tags": [
+            "Partida"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Partida"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PartidaDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Partida"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Selecao/nome": {
+        "get": {
+          "tags": [
+            "Selecao"
+          ],
+          "parameters": [
+            {
+              "name": "nome",
+              "in": "query",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Selecao": {
+        "get": {
+          "tags": [
+            "Selecao"
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Selecao"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelecaoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelecaoDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelecaoDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      },
+      "/api/Selecao/{id}": {
+        "get": {
+          "tags": [
+            "Selecao"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Selecao"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelecaoDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelecaoDto"
+                }
+              },
+              "application/*+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SelecaoDto"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Selecao"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "FaseEnum": {
+          "enum": [
+            10,
+            20,
+            30,
+            40,
+            50,
+            60
+          ],
+          "type": "integer",
+          "format": "int32"
+        },
+        "GrupoDto": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nome": {
+              "type": "string",
+              "nullable": true
+            },
+            "selecoes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/SelecaoDto"
+              },
+              "nullable": true
+            },
+            "jogos": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/JogoDto"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "JogadorDto": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "selecaoId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "selecao": {
+              "$ref": "#/components/schemas/SelecaoDto"
+            },
+            "nome": {
+              "type": "string",
+              "nullable": true
+            },
+            "posicao": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "JogoDto": {
+          "type": "object",
+          "properties": {
+            "grupoId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "selecaoA": {
+              "$ref": "#/components/schemas/SelecaoDto"
+            },
+            "selecaoB": {
+              "$ref": "#/components/schemas/SelecaoDto"
+            },
+            "data": {
+              "type": "string",
+              "nullable": true
+            },
+            "estadioId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "arbitroId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "resultado": {
+              "$ref": "#/components/schemas/JogoResultado"
+            }
+          },
+          "additionalProperties": false
+        },
+        "JogoResultado": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "selecaoJogoResultadoA": {
+              "$ref": "#/components/schemas/SelecaoJogoResultado"
+            },
+            "selecaoJogoResultadoB": {
+              "$ref": "#/components/schemas/SelecaoJogoResultado"
+            },
+            "resultado": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "PartidaDto": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "selecoes": {
+              "type": "string",
+              "nullable": true
+            },
+            "data": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "SelecaoDto": {
+          "required": [
+            "nome"
+          ],
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nome": {
+              "type": "string"
+            },
+            "continente": {
+              "type": "string",
+              "nullable": true
+            },
+            "qtdJogadores": {
+              "maximum": 26,
+              "minimum": 1,
+              "type": "integer",
+              "format": "int32"
+            },
+            "jogadores": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/JogadorDto"
+              },
+              "nullable": true
+            },
+            "gruposSelecoes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/GrupoDto"
+              },
+              "nullable": true
+            },
+            "grupoId": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        },
+        "SelecaoJogoResultado": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "selecaoId": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "pontos": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "golsMarcados": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "golsSofridos": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "cartaoAmarelo": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "cartaoVermelho": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  }

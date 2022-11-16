@@ -88,9 +88,48 @@ public class GrupoController : ControllerBase
             return this.StatusCode(StatusCodes.Status500InternalServerError, 
             $"Erro ao tentar recuperar Grupo. Erro: {ex.Message}");
         }
+
     }
 
-    
-   
-    
+    [HttpPut("{id}")]
+
+    public async Task<IActionResult> Put(int id, GrupoDto model)
+    {
+        try
+        {
+            var grupo = await _grupoService.UpdateGrupo(id, model);
+            if (grupo == null) return NoContent();
+
+            return Ok(grupo);
+        }
+        catch (Exception ex)
+        { 
+            return this.StatusCode(StatusCodes.Status500InternalServerError, 
+            $"Erro ao tentar atualizar grupo(s). Erro: {ex.Message}");
+        }
+    }
+
+    [HttpDelete("{id}")]
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
+        {
+            var grupo = await _grupoService.GetAllGrupoByIdAsync(id);
+            if (grupo == null) return NoContent();
+
+            return await _grupoService.DeleteGrupo(id) ?
+            
+                 Ok("Deletado"): 
+                 throw new Exception("Ocorreu um probleminha!!");
+            
+        }
+        catch (Exception ex)
+        { 
+            return this.StatusCode(StatusCodes.Status500InternalServerError, 
+            $"Erro ao tentar deletar grupo. Erro: {ex.Message}");
+        }
+        
+    }
+
 }

@@ -47,6 +47,47 @@ namespace BombaPatch.Api.Controllers
             return this.StatusCode(StatusCodes.Status500InternalServerError, 
             $"Erro ao tentar recuperar eliminatoria. Erro: {ex.Message}");
         }
+    }
+
+    [HttpDelete("{id}")]
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        try
+        {
+            var eliminatoria = await _eliminatoriaService.GetAllEliminatoriaByIdAsync(id);
+            if (eliminatoria == null) return NoContent();
+
+            return await _eliminatoriaService.DeleteEliminatoria(id) ?
+            
+                 Ok("Deletado"): 
+                 throw new Exception("Ocorreu um probleminha!!");
+            
+        }
+        catch (Exception ex)
+        { 
+            return this.StatusCode(StatusCodes.Status500InternalServerError, 
+            $"Erro ao tentar deletar eliminatoria. Erro: {ex.Message}");
+        }
+        
+    }
+
+    [HttpPut("{id}")]
+
+    public async Task<IActionResult> Put(int id, EliminatoriaDto model)
+    {
+        try
+        {
+            var eliminatoria = await _eliminatoriaService.UpdateEliminatoria(id, model);
+            if (eliminatoria == null) return NoContent();
+
+            return Ok(eliminatoria);
+        }
+        catch (Exception ex)
+        { 
+            return this.StatusCode(StatusCodes.Status500InternalServerError, 
+            $"Erro ao tentar atualizar eliminatoria(s). Erro: {ex.Message}");
+        }
     }   
 
 
@@ -207,4 +248,6 @@ namespace BombaPatch.Api.Controllers
 
         }
     }
+    
+
 }

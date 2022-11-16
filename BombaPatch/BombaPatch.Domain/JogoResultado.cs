@@ -24,7 +24,7 @@ namespace BombaPatch.Domain
                 Resultado = "SelecaoA foi a vencedora";
             }else
             {
-                Resultado = "A seleção B foi a vencedora";
+                Resultado = "A seleçãoB foi a vencedora";
             }
             
         }
