@@ -8,7 +8,7 @@ namespace BombaPatch.Domain
         public int GrupoId { get; set;}
         public Selecao SelecaoA {get; set;}
         public Selecao SelecaoB {get; set;}
-        public DateTime? data {get; set;}
+        public string data {get; set;}
         public int EstadioId {get; set;}
         public int ArbitroId {get; set;}
         public JogoResultado Resultado {get; set;}

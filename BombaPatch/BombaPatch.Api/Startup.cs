@@ -53,6 +53,8 @@ namespace BombaPatch.API
             services.AddScoped<IEliminatoriaService, EliminatoriaService>();
             services.AddScoped<ISelecaoJogoResultadoPersist, SelecaoJogoResultadoPersist>();
             services.AddScoped<ISelecaoJogoResultadoService, SelecaoJogoResultadoService>();
+            services.AddScoped<IPartidaPersist, PartidaPersist>();
+            services.AddScoped<IPartidaService, PartidaService>();
 
             services.AddControllers(); //retorna o controller (1)
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

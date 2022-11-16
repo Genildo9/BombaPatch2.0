@@ -23,6 +23,7 @@ namespace BombaPatch.Persistence.Contextos
         public DbSet<SelecaoJogoResultado> ResultadoSelecao { get; set; }
         public DbSet<GrupoClassificacao> GrupoClassificacao { get; set; }
         public DbSet<Eliminatoria> Eliminatoria { get; set; }
+        public DbSet<Partida> Partidas { get; set; }
         //public DbSet<Eliminatoria> Eliminatorias {get; set;}
 
         //apagar tabelas com mais de uma chave foreingn key

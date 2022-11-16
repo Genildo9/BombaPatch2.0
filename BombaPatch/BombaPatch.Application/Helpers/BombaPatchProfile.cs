@@ -18,6 +18,7 @@ namespace BombaPatch.Application.Helpers
             CreateMap<GrupoClassificacao, GrupoClassificacaoDto>().ReverseMap();
             CreateMap<Eliminatoria,EliminatoriaDto>().ReverseMap();
             CreateMap<SelecaoJogoResultado, SelecaoJogoResultadoDto>().ReverseMap();
+            CreateMap<Partida, PartidaDto>().ReverseMap();
         }
     }
 }
