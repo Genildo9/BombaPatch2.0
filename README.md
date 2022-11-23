@@ -20,10 +20,10 @@ Como usar?
 Camadas:
 -Api onde fica todos os controllers com as rotas, statup e o banco de dados.
 -A Application é onde fica os services com as regras de negocio e algumas validações. 
--O Domain é onde fica as classes principai.
+-O Domain é onde fica as classes principais.
 -Persistence é onde fica os arquivos que fazem a comunicação direta com o banco de dados.
 Controllers:
--Dentro do Controller fica as rotas da API, são elas a selecao onde tem os gets paara verificar as selecoes cadastradas, o post para cadastrar, o put para editar 
+-Dentro do Controller fica as rotas da API, são elas a selecao onde tem os gets para verificar as selecoes cadastradas, o post para cadastrar, o put para editar 
 e o delete para excluir.
 -A Partida onde serão exibidas todas as partidas da fase de grupos com as suas datas e possui os mesmos metodos que à em selecao.
 Tem o controller do Jogo, que tem um pouco mais de complexidade, onde tem a integração de três classes, a selecaoJogoResultado onde vai gravar
